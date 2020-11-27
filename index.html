@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link type="text/css" rel="stylesheet" href="css/app.css" />
+  <title>Project</title>
+  <script src="js/touche-min.js" charset="utf-8"></script>
+  <script src="js/zepto.min.js" charset="utf-8"></script>
+  <script src="js/app.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+  <div class="page active" data-page="entry">
+    <div class="entry-images">
+      <img src="assets/gov_bg.png">
+      <img src="assets/hc_bg.png">
+    </div>
+
+    <div class="entry-cards">
+      <div class="test">
+        <div class="card" data-js-page="govt">
+          <img src="assets/arrowL.png"> Government
+        </div>
+        <div class="logo">Kaon Interactive</div>
+        <div class="card" data-js-page="med">
+          Healthcare <img src="assets/arrowR.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" data-page="med">
+    <img class="background" src="assets/hc_bg.png">
+    <div class="button" data-js-page="entry">
+      <img src="assets/arrowL.png">
+    </div>
+    <div class="tag" id="hospital-1">Option A</div>
+    <div class="tag" id="hospital-2">Option B</div>
+  </div>
+
+  <div class="page" data-page="govt">
+    <img class="background" src="assets/gov_bg.png">
+    <div class="button" id="back__govt" data-js-page="entry">
+      <img src="assets/arrowR.png">
+    </div>
+    <div class="card" id="explore__button">
+      Explore
+    </div>
+    <div class="card hidden" id="explore__menu">
+      <div>Option 1</div>
+      <div>Option 2</div>
+      <div>Option 3</div>
+      <div>Option 4</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

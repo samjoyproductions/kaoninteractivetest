@@ -1,0 +1,128 @@
+@font-face{
+	font-family: "Josefin Sans Regular";
+	src: url(fonts/JosefinSans-Regular.ttf) format("truetype");
+}
+
+html {
+	font-family: "Josefin Sans Regular", sans-serif;
+}
+body{
+	margin: 0;
+	overflow: hidden;
+}
+
+.page{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	transition: transform 0.75s ease-in-out;
+}
+
+.page[data-page="govt"]{
+	z-index: 1;
+}
+.page[data-page="med"]{
+	z-index: 1;
+}
+.page[data-page="entry"]{
+	z-index: 3;
+	transform: translateX(100%);
+}
+.page.active{
+	transform: translateX(0);
+}
+.page.govActive{
+
+}
+
+
+.background{
+	width: 100vw;
+	height: 100vh;
+}
+.card{
+	margin: 1rem;
+	padding: 1rem;
+	background: rgba(200, 200, 200, 0.5);
+	color: rgba(250, 250, 250, 1);
+	font-size: 48px;
+}
+
+.hidden{
+	display: none;
+}
+
+/* entry page */
+.entry-images{
+	display: flex;
+}
+.entry-images img{
+	width: 50vw;
+	height: 100vh;
+	object-fit: cover;
+}
+.entry-cards{
+	position: absolute;
+	top: 20%;
+	width: 100vw;
+}
+.logo{
+	background: rgba(250, 250, 250, 0.8);
+	margin: 1rem;
+	padding: 1rem;
+	font-size: 64px;
+}
+.test{
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.button{
+	background: grey;
+	margin: 1rem;
+	padding: 1rem;
+	display: inline-block;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	color: rgba(250, 250, 250, 1);
+}
+
+/* med page */
+.tag{
+	background-color: grey;
+	margin: 1rem;
+	padding: 1rem;
+	display: inline-block;
+	position: absolute;
+	color: rgba(250, 250, 250, 1);
+	font-size: 48px;
+}
+#hospital-1{
+	top: 20%;
+	left: 30%;
+}
+#hospital-2{
+	top: 35%;
+	left: 55%;
+}
+
+/* govt page */
+#back__govt{
+	top: 10%;
+	left: 90%;
+}
+#explore__button{
+	position: absolute;
+	left: 10%;
+	top: 80%;
+}
+#explore__menu{
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	display: none;
+}
