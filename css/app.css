@@ -1,95 +1,207 @@
+/* globals */
 @font-face{
 	font-family: "Josefin Sans Regular";
 	src: url(fonts/JosefinSans-Regular.ttf) format("truetype");
 }
-
 html {
 	font-family: "Josefin Sans Regular", sans-serif;
 }
 body{
 	margin: 0;
 	overflow: hidden;
+	padding: 0;
 }
 
-.page{
+/* controls */
+.o_controls{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+/* .c_controlBox{
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 100%;
+	height: 100%;
+} */
+.c_entryControls{
 	width: 100vw;
-	height: 100vh;
-	transition: transform 0.75s ease-in-out;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 5%;
+	transition: all 1s ease-in-out;
 }
 
-.page[data-page="govt"]{
-	z-index: 1;
-}
-.page[data-page="med"]{
-	z-index: 1;
-}
-.page[data-page="entry"]{
-	z-index: 3;
-	transform: translateX(100%);
-}
-.page.active{
-	transform: translateX(0);
-}
-.page.govActive{
-
-}
-
-
-.background{
-	width: 100vw;
-	height: 100vh;
-}
-.card{
+.c_controlCard{
 	margin: 1rem;
 	padding: 1rem;
 	background: rgba(200, 200, 200, 0.5);
 	color: rgba(250, 250, 250, 1);
 	font-size: 48px;
 }
-
-.hidden{
-	display: none;
-}
-
-/* entry page */
-.entry-images{
-	display: flex;
-}
-.entry-images img{
-	width: 50vw;
-	height: 100vh;
-	object-fit: cover;
-}
-.entry-cards{
-	position: absolute;
-	top: 20%;
-	width: 100vw;
-}
-.logo{
+.c_controlsLogoCard{
 	background: rgba(250, 250, 250, 0.8);
-	margin: 1rem;
-	padding: 1rem;
 	font-size: 64px;
 }
-.test{
+.c_controlsLogoCard__circleContainer{
 	display: flex;
-	justify-content: space-between;
+}
+.c_controlsLogoCard__circle{
+	height: 50px;
+	width: 50px;
+	background-color: red;
+	border-radius: 50%;
+	position: relative;
+	z-index: 1;
+}
+.c_controlsLogoCard__circle:nth-child(2){
+	left: -10px;
+}
+.c_controlsLogoCard__circle:nth-child(3){
+	left: -20px;
+}
+.c_controlsLogoCard__circle:nth-child(4){
+	left: -30px;
+}
+.c_controlsLogoCard__circle:nth-child(2n){
+	z-index: 2;
+	background-color: grey;
 }
 
 
-.button{
+.c_controlButton{
 	background: grey;
-	margin: 1rem;
 	padding: 1rem;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
-	top: 0%;
-	left: 0%;
+	top: 5%;
+	right: 0;
 	color: rgba(250, 250, 250, 1);
+	width: 150px;
+	height: 125px;
 }
+.c_controlButton img{
+	width: 53px;
+	height: 54px;
+}
+
+.c_govControls {
+	opacity: 0;
+	transition: opacity 0.25s 0s ease-in;
+	pointer-events: none;
+	
+}
+.c_govControls .c_controlButton{
+	top: 5%;
+	right: 0;
+}
+.c_medControls{
+	opacity: 0;
+	transition: opacity 0.25s 0s ease-in;
+	pointer-events: none;
+}
+.c_medControls .c_controlButton{
+	top: 5%;
+	left: 0;
+}
+
+.o_controls.o_controls--govActive .c_entryControls{
+	transform: translateX(100%);
+}
+.o_controls.o_controls--govActive .c_govControls{
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity 1s 0.75s ease-in;
+}
+
+.o_controls.o_controls--medActive .c_entryControls{
+	transform: translateX(-100%);
+}
+.o_controls.o_controls--medActive .c_medControls{
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity 1s 0.75s ease-in;
+}
+
+/* background images */
+.o_backgroundImages{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.c_backgroundImgContainer{
+	width: 100%;
+	max-width: 50vw;
+	height: 100vh;
+	display: inline-block;
+	background-size: cover;
+	background-position: center;
+	transition: max-width 1s ease-in-out;
+}
+.c_backgroundImgContainer--govBackground{
+	background-image: url("/assets/gov_bg.png");
+}
+.c_backgroundImgContainer--medBackground{
+	background-image: url("/assets/hc_bg.png");
+}
+.separatorContainer{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateX(0);
+	transition: all 1s ease-in-out;
+	opacity: 1;
+	background-color: rgba(0,0,0,0.5);
+}
+.separator{
+	height: 100vh;
+	width: 20px;
+	position: absolute;
+	left: 50%;
+	margin-left: -10px;
+	z-index: 4;
+	background-color: white;
+	box-shadow: 0px 0px 20px 7px rgba(0,0,0,0.5);
+}
+
+.o_backgroundImages--govActive .separatorContainer{
+	transform: translateX(50%);
+	opacity: 0;
+}
+.o_backgroundImages--medActive .separatorContainer{
+	transform: translateX(-50%);
+	opacity: 0;
+}
+
+.o_backgroundImages.o_backgroundImages--govActive .c_backgroundImgContainer--govBackground{
+	max-width: 100vw;
+}
+.o_backgroundImages.o_backgroundImages--govActive .c_backgroundImgContainer--medBackground{
+	max-width: 0;
+}
+.o_backgroundImages.o_backgroundImages--medActive .c_backgroundImgContainer--govBackground{
+	max-width: 0;
+}
+.o_backgroundImages.o_backgroundImages--medActive .c_backgroundImgContainer--medBackground{
+	max-width: 100vw;
+}
+
+
+
+
+/* OLD */
 
 /* med page */
 .tag{
@@ -111,10 +223,7 @@ body{
 }
 
 /* govt page */
-#back__govt{
-	top: 10%;
-	left: 90%;
-}
+
 #explore__button{
 	position: absolute;
 	left: 10%;
