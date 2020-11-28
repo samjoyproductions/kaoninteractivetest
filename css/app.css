@@ -1,128 +1,389 @@
-@font-face{
+/*      globals      */
+
+@font-face {
 	font-family: "Josefin Sans Regular";
 	src: url(fonts/JosefinSans-Regular.ttf) format("truetype");
 }
-
 html {
 	font-family: "Josefin Sans Regular", sans-serif;
 }
-body{
+body {
 	margin: 0;
 	overflow: hidden;
+	padding: 0;
 }
 
-.page{
+
+
+/*      controls      */
+
+.o_controls {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+}
+
+.c_entryControls {
+	display: flex;
+	justify-content: space-between;
+	width: 100vw;
+	margin-top: 5%;
+	transition: transform 1s ease-in-out;
+}
+
+.c_controlCard {
+	display: grid;
+	margin: 1rem;
+	padding: 1rem;
+	font-size: 48px;
+	background: rgba(149, 148, 146, 0.85);
+	color: rgba(250, 250, 250, 1);
+	box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.5);
+	transition: transform 0.5s ease-in-out;
+	cursor: pointer;
+}
+.c_controlCard:hover{
+	transform: scale(1.05);
+}
+
+.c_controlButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 5%;
+	right: 0;
+	width: 150px;
+	height: 125px;
+	padding: 1rem;
+	background: rgb(140, 140, 140);
+	box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.5);
+	transition: transform 0.5s ease-in-out;
+	z-index: 4;
+	cursor: pointer;
+}
+.c_controlButton img {
+	width: 53px;
+	height: 54px;
+}
+.c_controlButton:hover{
+	transform: scale(1.05);
+}
+
+/* entry page gov card */
+.c_controlCard--govCard {
+	grid-template-areas:
+		"govLogo govLogo"
+		"govArrow govText";
+	justify-items: right;
+	align-items: center;
+	grid-template-rows: 72px 150px;
+	margin-left: 0px;
+}
+.c_controlCard--govCardLogo {
+	grid-area: govLogo;
+	width: 64px;
+}
+.c_controlCard--govCardArrow {
+	grid-area: govArrow;
+	align-self: start;
+	padding-left: 1rem;
+	padding-right: 2rem;
+}
+.c_controlCard--govCardText {
+	grid-area: govText;
+	align-self: start;
+}
+/* entry page healthcare card */
+.c_controlCard--medCard {
+	grid-template-areas:
+		"medLogo medLogo"
+		"medText medArrow";
+	justify-items: left;
+	align-items: center;
+	grid-template-rows: 72px 150px;
+	margin-right: 0px;
+}
+.c_controlCard--medCardLogo {
+	grid-area: medLogo;
+	width: 64px;
+}
+.c_controlCard--medCardArrow {
+	grid-area: medArrow;
+	align-self: start;
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+.c_controlCard--medCardText {
+	grid-area: medText;
+	align-self: start;
+}
+/* entry page logo card */
+.c_controlsLogoCard {
+	padding: 2rem 6rem 2rem 2rem;
+	font-size: 80px;
+	background: rgba(227, 225, 223, 0.85);
+	color: rgb(81, 81, 81);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.c_controlsLogoCard__circleContainer {
+	display: flex;
+}
+.c_controlsLogoCard__circle {
+	position: relative;
+	z-index: 1;
+	height: 100px;
+	width: 100px;
+	background-color: rgb(170, 172, 172);
+	border-radius: 50%;
+}
+.c_controlsLogoCard__circle:nth-child(2) {
+	left: -20px;
+}
+.c_controlsLogoCard__circle:nth-child(3) {
+	left: -40px;
+	background-color: rgb(170, 170, 91);
+}
+.c_controlsLogoCard__circle:nth-child(4) {
+	left: -60px;
+}
+.c_controlsLogoCard__circle:nth-child(2n) {
+	z-index: 2;
+	background-color: rgb(140, 140, 140);
+}
+
+
+
+/*      government page      */
+
+.c_govControls {
+	opacity: 0;
+	transition: opacity 0.25s 0s ease-in;
+	pointer-events: none;
+}
+.c_govControls .c_controlButton {
+	top: 5%;
+	right: 0;
+}
+
+.c_govControls--exploreButton {
+	position: absolute;
+	text-align: center;
+	bottom: 5%;
+	margin-left: 0px;
+	padding: 2rem 6rem;
+	opacity: 1;
+	font-size: 72px;
+	background-color: rgb(140, 140, 140);
+	transition: opacity 0.25s ease-in;
+}
+.c_govControls--exploreMenu {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	transition: transform 0.75s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: opacity 0.25s ease-in;
 }
-
-.page[data-page="govt"]{
-	z-index: 1;
-}
-.page[data-page="med"]{
-	z-index: 1;
-}
-.page[data-page="entry"]{
-	z-index: 3;
-	transform: translateX(100%);
-}
-.page.active{
-	transform: translateX(0);
-}
-.page.govActive{
-
-}
-
-
-.background{
-	width: 100vw;
-	height: 100vh;
-}
-.card{
-	margin: 1rem;
-	padding: 1rem;
-	background: rgba(200, 200, 200, 0.5);
-	color: rgba(250, 250, 250, 1);
-	font-size: 48px;
-}
-
-.hidden{
-	display: none;
-}
-
-/* entry page */
-.entry-images{
-	display: flex;
-}
-.entry-images img{
-	width: 50vw;
-	height: 100vh;
-	object-fit: cover;
-}
-.entry-cards{
+.c_govControls--exploreMenu--menuBox {
 	position: absolute;
-	top: 20%;
-	width: 100vw;
-}
-.logo{
-	background: rgba(250, 250, 250, 0.8);
-	margin: 1rem;
+	top: 10%;
+	left: 50%;
+	margin-left: -260px;
 	padding: 1rem;
-	font-size: 64px;
-}
-.test{
-	display: flex;
-	justify-content: space-between;
-}
-
-
-.button{
-	background: grey;
-	margin: 1rem;
-	padding: 1rem;
-	display: inline-block;
-	position: absolute;
-	top: 0%;
-	left: 0%;
+	font-size: 72px;
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	justify-items: center;
+	background: rgba(149, 148, 146);
 	color: rgba(250, 250, 250, 1);
+	box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.5);
+}
+.c_govControls--exploreMenu--menuOption {
+	padding: 1rem 10rem;
+	transition: transform 0.5s ease-in-out
+}
+.c_govControls--exploreMenu--menuOption:hover {
+	transform: scale(1.05);
+}
+.c_govControls--exploreMenu--menuBar {
+	width: 400px;
+	height: 3px;
+	z-index: 4;
+	background-color: white;
+}
+.c_govControls.c_govControls--menuActive .c_govControls--exploreButton {
+	opacity: 0;
+}
+.c_govControls.c_govControls--menuActive .c_govControls--exploreMenu {
+	opacity: 1;
+	pointer-events: all;
 }
 
-/* med page */
-.tag{
-	background-color: grey;
-	margin: 1rem;
+
+
+/*      Healthcare Page      */
+
+.c_medControls {
+	opacity: 0;
+	transition: opacity 0.25s 0s ease-in;
+	pointer-events: none;
+}
+.c_medControls .c_controlButton {
+	top: 5%;
+	left: 0;
+}
+.c_medControls--medOption {
+	background: rgb(81, 81, 81);
 	padding: 1rem;
-	display: inline-block;
 	position: absolute;
 	color: rgba(250, 250, 250, 1);
-	font-size: 48px;
+	font-size: 36px;
+	transition: transform 0.25s ease-in-out;
 }
-#hospital-1{
+.c_medControls--medOption:hover{
+	transform: translateY(-7.5%);
+}
+
+.arrowDown {
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid rgb(81, 81, 81);
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -20px;
+}
+
+#c_medControls--medOption__optionA {
 	top: 20%;
 	left: 30%;
 }
-#hospital-2{
+#c_medControls--medOption__optionB {
 	top: 35%;
 	left: 55%;
 }
 
-/* govt page */
-#back__govt{
-	top: 10%;
-	left: 90%;
+/* helper classes for control animations */
+.o_controls.o_controls--govActive .c_entryControls {
+	transform: translateX(100%);
 }
-#explore__button{
-	position: absolute;
-	left: 10%;
-	top: 80%;
+.o_controls.o_controls--govActive .c_govControls {
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity 1s 0.75s ease-in;
 }
-#explore__menu{
+
+.o_controls.o_controls--medActive .c_entryControls {
+	transform: translateX(-100%);
+}
+.o_controls.o_controls--medActive .c_medControls {
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity 1s 0.75s ease-in;
+}
+
+
+
+/*      background images      */
+
+.o_backgroundImages {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+.c_backgroundImgContainer {
+	width: 100%;
+	max-width: 50vw;
+	height: 100vh;
+	display: inline-block;
+	background-size: cover;
+	background-position: center;
+	transition: max-width 1s ease-in-out;
+}
+
+.c_backgroundImgContainer--govBackground {
+	background-image: url("/assets/gov_bg.png");
+}
+.c_backgroundImgContainer--medBackground {
+	background-image: url("/assets/hc_bg.png");
+}
+
+.o_backgroundImages.o_backgroundImages--govActive .o_opacityFilter,
+.o_backgroundImages.o_backgroundImages--medActive .o_opacityFilter{
+	opacity: 0;
+}
+
+
+.o_backgroundImages.o_backgroundImages--govActive .c_backgroundImgContainer--govBackground {
+	max-width: 100vw;
+}
+.o_backgroundImages.o_backgroundImages--govActive .c_backgroundImgContainer--medBackground {
+	max-width: 0;
+}
+.o_backgroundImages.o_backgroundImages--medActive .c_backgroundImgContainer--govBackground {
+	max-width: 0;
+}
+.o_backgroundImages.o_backgroundImages--medActive .c_backgroundImgContainer--medBackground {
+	max-width: 100vw;
+}
+
+/* opacity filter */
+.o_opacityFilter{
+	position: fixed;
+	opacity: 1;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	transition: opacity 1s ease-in-out;
+}
+
+/*      entry page separator     */
+
+.separatorContainer {
+	width: 100vw;
+	height: 100vh;
 	position: absolute;
-	top: 30%;
-	left: 30%;
-	display: none;
+	top: 0;
+	left: 0;
+	transform: translateX(0);
+	transition: all 1s ease-in-out;
+	opacity: 1;
+	z-index: 1;
+}
+.separator {
+	height: 100vh;
+	width: 20px;
+	position: absolute;
+	left: 50%;
+	margin-left: -10px;
+	z-index: 4;
+	background-color: white;
+	box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.5);
+}
+.o_backgroundImages--govActive .separatorContainer {
+	transform: translateX(50%);
+	opacity: 0;
+}
+.o_backgroundImages--medActive .separatorContainer {
+	transform: translateX(-50%);
+	opacity: 0;
 }
