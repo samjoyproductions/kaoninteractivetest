@@ -318,10 +318,10 @@ body {
 }
 
 .c_backgroundImgContainer--govBackground {
-	background-image: url("/assets/gov_bg.png");
+	background-image: url("assets/gov_bg.png");
 }
 .c_backgroundImgContainer--medBackground {
-	background-image: url("/assets/hc_bg.png");
+	background-image: url("assets/hc_bg.png");
 }
 
 .o_backgroundImages.o_backgroundImages--govActive .o_opacityFilter,
