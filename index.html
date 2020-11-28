@@ -13,9 +13,12 @@
 
   <div class="o_controls">
 
-    <div class="c_entryControls c_controlBox">
-      <div class="c_controlCard" data-js-page="gov">
-        <img src="assets/arrowL.png"> Government
+    <div class="c_entryControls">
+
+      <div class="c_controlCard c_controlCard--govCard" data-js-page="gov">
+        <img class="c_controlCard--govCardLogo" src="assets/gov.png">
+        <img class="c_controlCard--govCardArrow" src="assets/arrowL.png">
+        <div class="c_controlCard--govCardText">Government</div>
       </div>
 
       <div class="c_controlsLogoCard">
@@ -28,78 +31,69 @@
         </div>
       </div>
 
-      <div class="c_controlCard" data-js-page="med">
-        Healthcare <img src="assets/arrowR.png">
+      <div class="c_controlCard c_controlCard--medCard" data-js-page="med">
+        <img class="c_controlCard--medCardLogo" src="assets/med.png">
+        <div class="c_controlCard--medCardText">Healthcare</div>
+        <img class="c_controlCard--medCardArrow" src="assets/arrowR.png">
       </div>
+
     </div>
 
-    <div class="c_govControls c_controlBox">
+    <div class="c_govControls">
+
       <div class="c_controlButton" data-js-page="entry">
         <img src="assets/arrowR.png">
       </div>
+
+      <div class="c_govControls--exploreButton c_controlCard" data-js-govmenu="toggleon">
+        Explore
+      </div>
+
+      <div class="c_govControls--exploreMenu" data-js-govmenu="toggleoff">
+        <div class="c_govControls--exploreMenu--menuBox u_exploreMenu--preventClose">
+          <div class="c_govControls--exploreMenu--menuOption u_exploreMenu--preventClose">Option 1</div>
+          <div class="c_govControls--exploreMenu--menuBar u_exploreMenu--preventClose"></div>
+          <div class="c_govControls--exploreMenu--menuOption u_exploreMenu--preventClose">Option 2</div>
+          <div class="c_govControls--exploreMenu--menuBar u_exploreMenu--preventClose"></div>
+          <div class="c_govControls--exploreMenu--menuOption u_exploreMenu--preventClose">Option 3</div>
+          <div class="c_govControls--exploreMenu--menuBar u_exploreMenu--preventClose"></div>
+          <div class="c_govControls--exploreMenu--menuOption u_exploreMenu--preventClose">Option 4</div>
+        </div>
+      </div>
+
     </div>
 
     <div class="c_medControls">
+
       <div class="c_controlButton" data-js-page="entry">
         <img src="assets/arrowL.png">
       </div>
+
+      <div class="c_medControls--medOption" id="c_medControls--medOption__optionA">
+        Option A
+        <div class="arrowDown"></div>
+      </div>
+
+      <div class="c_medControls--medOption" id="c_medControls--medOption__optionB">
+        Option B
+        <div class="arrowDown"></div>
+      </div>
+
     </div>
 
   </div>
 
-  <div class="backgroundFilter">
-    <!-- do the thing with the filter here! -->
-  </div>
+  
 
   <div class="o_backgroundImages">
+    <div class="o_opacityFilter"></div>
     <div class="c_backgroundImgContainer c_backgroundImgContainer--govBackground"></div>
     <div class="separatorContainer">
       <div class="separator"></div>
     </div>
     <div class="c_backgroundImgContainer c_backgroundImgContainer--medBackground"></div>
+
   </div>
-
-
-
-  <!-- <div class="page active" data-page="entry">
-    <div class="entry-images">
-      <img src="assets/gov_bg.png">
-      <img src="assets/hc_bg.png">
-    </div>
-
-    <div class="entry-cards">
-      <div class="test">
-        <div class="card" data-js-page="govt">
-          <img src="assets/arrowL.png"> Government
-        </div>
-        <div class="logo">Kaon Interactive</div>
-        
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="page" data-page="med">
-    <img class="background" src="assets/hc_bg.png">
-    
-    <div class="tag" id="hospital-1">Option A</div>
-    <div class="tag" id="hospital-2">Option B</div>
-  </div>
-
-  <div class="page" data-page="govt">
-    <img class="background" src="assets/gov_bg.png">
-    <div class="button" id="back__govt" data-js-page="entry">
-      <img src="assets/arrowR.png">
-    </div>
-    <div class="card" id="explore__button">
-      Explore
-    </div>
-    <div class="card hidden" id="explore__menu">
-      <div>Option 1</div>
-      <div>Option 2</div>
-      <div>Option 3</div>
-      <div>Option 4</div>
-    </div>
-  </div> -->
 
 </body>
 
